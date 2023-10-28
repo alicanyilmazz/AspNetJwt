@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ConsumeAPI.Utilities;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -16,7 +18,10 @@ namespace ConsumeAPI.Filters
             ClaimsPrincipal claimsPrincipal = actionContext.ControllerContext.RequestContext.Principal as ClaimsPrincipal;
             if (claimsPrincipal != null)
             {
-                var claim = claimsPrincipal.Claims.FirstOrDefault(x=>x.Type == JwtRegis);
+                var claim = claimsPrincipal.Claims.FirstOrDefault(x=>x.Type == JwtRegisteredClaimNames.Typ);
+                var tokenType = claim?.Value;
+
+                var manager = ServiceLocator.Create<>
             }
             return base.IsAuthorized(actionContext);
         }
