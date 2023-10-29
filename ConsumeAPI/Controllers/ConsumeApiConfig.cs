@@ -17,7 +17,7 @@ namespace ConsumeAPI.Controllers
             config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             config.MapHttpAttributeRoutes();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            config.Filters.Add(new )
+            
         }
     }
 }
