@@ -1,3 +1,5 @@
+using ConsumeAPI.Managers;
+using Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace ConsumeAPI
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            //ServiceLocator.Register<TokenManager>(new TokenManager());
         }
     }
 }
