@@ -120,6 +120,8 @@
     <Compile Include="Common\EnvironmentSettings.cs" />
     <Compile Include="Common\UnAuthorizedErrorMessage.cs" />
     <Compile Include="Configurations\HostConfiguration.cs" />
+    <Compile Include="Controller\Abstracts\IAuthorizationValidator.cs" />
+    <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\Manages\TokenManager.cs" />
     <Compile Include="Controller\TokenController.cs" />
     <Compile Include="Controller\Options\TokenOptions.cs" />
@@ -128,6 +130,9 @@
     <Compile Include="FakeCacheMechanisim\TokenSafeCodeCache.cs" />
     <Compile Include="FakeSafeMechanisim\SecretManager.cs" />
     <Compile Include="Filters\HostAuthorizeAttribute.cs" />
+    <Compile Include="GlobalVariables\Constants\AuthorizationErrorCodes.cs" />
+    <Compile Include="Models\BasicTokenRequestMessage.cs" />
+    <Compile Include="Models\RefreshTokenRequestMessage.cs" />
     <Compile Include="Models\RefreshTokenResponseMessage.cs" />
     <Compile Include="Models\TokenSafeCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
