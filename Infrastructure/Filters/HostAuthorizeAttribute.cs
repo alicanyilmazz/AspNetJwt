@@ -1,4 +1,7 @@
-﻿using Infrastructure.Controller.Manages;
+﻿using Infrastructure.Common;
+using Infrastructure.Controller.Manages;
+using Infrastructure.GlobalVariables.Constants;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -12,15 +15,37 @@ namespace Infrastructure.Filters
         public static string HostAuthorizationSettingKey { get; set; }
         protected override bool IsAuthorized(HttpActionContext actionContext)
         {
-            ClaimsPrincipal claimsPrincipal = actionContext.ControllerContext.RequestContext.Principal as ClaimsPrincipal;
-            if (claimsPrincipal != null)
+            if (actionContext.ControllerContext.RequestContext.Principal is ClaimsPrincipal claimsPrincipal)
             {
                 var claim = claimsPrincipal.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Typ);
                 var tokenType = claim?.Value;
 
                 var manager = ServiceLocator.Create<TokenManager>();
+                if (string.IsNullOrEmpty(tokenType) || tokenType != manager.Options.TokenTyp)
+                {
+                    return false;
+                }
             }
             return base.IsAuthorized(actionContext);
+        }
+        public override void OnAuthorization(HttpActionContext actionContext)
+        {
+            bool hasHostAuthorization = string.IsNullOrEmpty(HostAuthorizationSettingKey) || HostConfiguration.GetSetting(HostAuthorizationSettingKey,"A").Equals("A");
+            if (!hasHostAuthorization)
+            {
+                return; // Skips Authorization
+            }
+            base.OnAuthorization(actionContext);
+        }
+
+        protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
+        {
+            if (actionContext is null)
+            {
+                throw new ArgumentNullException(nameof(actionContext));
+            }
+            actionContext.Response = ExceptionHelper.GenerateUnAuthorizedHttpMessage("Authentication failed.", AuthorizationErrorCodes.UNAUTHORIZED_ERROR_CODE);
+            //base.HandleUnauthorizedRequest(actionContext);
         }
     }
 }
