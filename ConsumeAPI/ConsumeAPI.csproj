@@ -220,16 +220,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ConsumeApiConfig.cs" />
-    <Compile Include="Core\TokenOptions.cs" />
-    <Compile Include="Managers\HostAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Managers\TokenManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Safe\SafeUserSafeService.cs" />
-    <Compile Include="Utilities\HostConfiguration.cs" />
-    <Compile Include="Utilities\ServiceLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
@@ -262,8 +256,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Filters\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{2E93121A-AD7E-4E08-9F25-927B019BD3C1}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
