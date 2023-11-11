@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,16 @@ namespace Infrastructure.FakeSafeMechanisim
                 return (true, new NetworkCredential(Username,Password));
             }
             return (false, new NetworkCredential());
+        }
+        public static SecureString ToSecureString(string text)
+        {
+            if (text is null)
+                return null;
+            var secureText = new SecureString();
+            foreach (var c in text)
+                secureText.AppendChar(c);
+            secureText.MakeReadOnly();
+            return secureText;
         }
     }
     public class UserCredentials
