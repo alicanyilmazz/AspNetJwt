@@ -161,12 +161,14 @@
     <Compile Include="Rest\BasicRefreshTokenProvider.cs" />
     <Compile Include="Rest\BasicTokenProvider.cs" />
     <Compile Include="Rest\IHostClient.cs" />
-    <Compile Include="Rest\ILogService.cs" />
+    <Compile Include="Utilities\ILogService.cs" />
     <Compile Include="Rest\ITokenProvider.cs" />
     <Compile Include="Rest\RestWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SafeDefinitions\SafeUserSafeService.cs" />
+    <Compile Include="Utilities\LogService.cs" />
+    <Compile Include="Utilities\QueueManager.cs" />
     <Compile Include="Utilities\ServiceLocator.cs" />
     <Compile Include="Utilities\SingletonProvider.cs" />
   </ItemGroup>
