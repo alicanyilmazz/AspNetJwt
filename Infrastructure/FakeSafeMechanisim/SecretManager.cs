@@ -53,8 +53,8 @@ namespace Infrastructure.FakeSafeMechanisim
                 {
                     UsernameCode = "SERVER_USERNAME",
                     PasswordCode = "SERVER_PASSWORD",
-                    Username = "server_user",
-                    Password = "987456"
+                    Username = "ServiceAppUser",
+                    Password = "1q2w3e4r5t*"
                 }
             };
 
