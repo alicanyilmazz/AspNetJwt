@@ -241,11 +241,11 @@ namespace Infrastructure.Controller.Manages
 
         public HttpResponseException GenerateUnauthorizedException(string message)
         {
-            return ExceptionHelper.GenerateUnAuthorizeException(message, -1);
+            return Helper.GenerateUnAuthorizeException(message, -1);
         }
         public HttpResponseException GenerateUnauthorizedException(string message , int code)
         {
-            return ExceptionHelper.GenerateUnAuthorizeException(message, code);
+            return Helper.GenerateUnAuthorizeException(message, code);
         }
 
     }
