@@ -44,7 +44,7 @@ namespace Infrastructure.Filters
             {
                 throw new ArgumentNullException(nameof(actionContext));
             }
-            actionContext.Response = ExceptionHelper.GenerateUnAuthorizedHttpMessage("Authentication failed.", AuthorizationErrorCodes.UNAUTHORIZED_ERROR_CODE);
+            actionContext.Response = Helper.GenerateUnAuthorizedHttpMessage("Authentication failed.", AuthorizationErrorCodes.UNAUTHORIZED_ERROR_CODE);
             //base.HandleUnauthorizedRequest(actionContext);
         }
     }
