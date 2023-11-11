@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin.Security.OAuth;
+﻿using Infrastructure.Filters;
+using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace ConsumeAPI.Controllers
             config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             config.MapHttpAttributeRoutes();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            
+            config.Filters.Add(new HostAuthorizeAttribute());
+            HostAuthorizeAttribute.HostAuthorizationSettingKey = "UseHostCoreAuthorization";
         }
     }
 }

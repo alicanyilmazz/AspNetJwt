@@ -1,4 +1,3 @@
-using ConsumeAPI.Managers;
 using Infrastructure;
 using System;
 using System.Collections.Generic;
