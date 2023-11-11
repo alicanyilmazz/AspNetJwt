@@ -11,7 +11,11 @@ namespace Infrastructure
     {
         public static NetworkCredential getSecurityKey(string key)
         {
-            return new NetworkCredential();
+           if (string.IsNullOrEmpty(key))
+               throw new ArgumentNullException(nameof(key));
+           if (key.Equals("ServiceAppTokenSecret")) 
+                return new NetworkCredential(userName:"SecretKey",password: "1q2w3e4r5t*1q2w3e4r5t*1q2w3e4r5t*1q2w3e4r5t*");
+           return new NetworkCredential();
         }
     }
 }
